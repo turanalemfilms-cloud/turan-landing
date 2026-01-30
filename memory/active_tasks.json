@@ -1,3 +1,11 @@
 {
-  "tasks": []
+  "tasks": [
+    {
+      "id": "self-improve-001",
+      "type": "self_improvement",
+      "description": "Create PROJECTS.md structure for startup context",
+      "status": "in_progress",
+      "startedAt": "2026-01-30T16:20:00"
+    }
+  ]
 }
