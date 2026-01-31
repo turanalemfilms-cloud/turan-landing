@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="kk" data-theme="ios" data-mode="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TURAN.IT — Дизайн Империясы</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        /* Қазақ тілін толық қолдайтын қаріптер (Cyrillic + Cyrillic Extended) */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Manrope:wght@300;500;800&family=JetBrains+Mono:wght@400;700&family=Lora:ital,wght@0,700;1,700&family=Unbounded:wght@900&display=swap&subset=cyrillic,cyrillic-ext');
+
+        :root {
+            --transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        /* --- THEMES & MODES CONFIG --- */
+        
+        /* iOS 26 - Modern Apple Vibe */
+        [data-theme="ios"] { --font: 'Manrope'; --radius: 28px; }
+        [data-theme="ios"][data-mode="dark"] { 
+            --bg: #000; --text: #fff; --accent: #007AFF; --card: #1c1c1e; --border: 1px solid rgba(255,255,255,0.1); --placeholder: #636366; --input-bg: #1c1c1e;
+        }
+        [data-theme="ios"][data-mode="light"] { 
+            --bg: #f2f2f7; --text: #000; --accent: #007AFF; --card: #fff; --border: 1px solid rgba(0,0,0,0.1); --placeholder: #8e8e93; --input-bg: #fff;
+        }
+
+        /* Cyberpunk - High Contrast Neon */
+        [data-theme="cyber"] { --font: 'JetBrains Mono'; --radius: 0px; }
+        [data-theme="cyber"][data-mode="dark"] { 
+            --bg: #000; --text: #00ff41; --accent: #ff0055; --card: #000; --border: 2px solid #00ff41; --placeholder: #004411; --input-bg: #000;
+        }
+        [data-theme="cyber"][data-mode="light"] { 
+            --bg: #fff; --text: #000; --accent: #0000ff; --card: #fff; --border: 2px solid #000; --placeholder: #999; --input-bg: #fff;
+        }
+
+        /* Minimal - Swiss Style */
+        [data-theme="minimal"] { --font: 'Montserrat'; --radius: 0px; }
+        [data-theme="minimal"][data-mode="dark"] { 
+            --bg: #111; --text: #fff; --accent: #fff; --card: transparent; --border: 1px solid #333; --placeholder: #444; --input-bg: #111;
+        }
+        [data-theme="minimal"][data-mode="light"] { 
+            --bg: #fff; --text: #000; --accent: #000; --card: transparent; --border: 1px solid #eee; --placeholder: #ccc; --input-bg: #fff;
+        }
+
+        /* Royal - Kazakh Elite Vibe */
+        [data-theme="royal"] { --font: 'Lora'; --radius: 12px; }
+        [data-theme="royal"][data-mode="dark"] { 
+            --bg: #061a12; --text: #fdf5e6; --accent: #d4af37; --card: #0a261a; --border: 1px solid #d4af37; --placeholder: #2a4a35; --input-bg: #0a261a;
+        }
+        [data-theme="royal"][data-mode="light"] { 
+            --bg: #fdf5e6; --text: #061a12; --accent: #8b0000; --card: #fffaf0; --border: 1px solid #8b0000; --placeholder: #c4b4a0; --input-bg: #fffaf0;
+        }
+
+        /* Web3 - Fluid Gradients */
+        [data-theme="web3"] { --font: 'Montserrat'; --radius: 100px; }
+        [data-theme="web3"][data-mode="dark"] { 
+            --bg: #0f172a; --text: #f8fafc; --accent: #8b5cf6; --card: #1e293b; --border: 1px solid transparent; --placeholder: #475569; --input-bg: #1e293b;
+        }
+        [data-theme="web3"][data-mode="light"] { 
+            --bg: #f8fafc; --text: #0f172a; --accent: #ec4899; --card: #fff; --border: 1px solid #e2e8f0; --placeholder: #94a3b8; --input-bg: #fff;
+        }
+
+        /* Neumorphism - Soft Readability Fix */
+        [data-theme="neu"] { --font: 'Montserrat'; --radius: 32px; }
+        [data-theme="neu"][data-mode="dark"] { 
+            --bg: #1a1a1a; --text: #eee; --accent: #007AFF; --card: #1a1a1a; --border: none; --placeholder: #444; --input-bg: #1a1a1a; --shadow: 8px 8px 16px #0d0d0d, -8px -8px 16px #272727;
+        }
+        [data-theme="neu"][data-mode="light"] { 
+            --bg: #e0e0e0; --text: #222; --accent: #007AFF; --card: #e0e0e0; --border: none; --placeholder: #a0a0a0; --input-bg: #e0e0e0; --shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+        }
+
+        /* Brutalism - Fixed Font */
+        [data-theme="brutal"] { --font: 'Unbounded'; --radius: 0px; }
+        [data-theme="brutal"][data-mode="dark"] { 
+            --bg: #ffff00; --text: #000; --accent: #ff00ff; --card: #fff; --border: 4px solid #000; --placeholder: #666; --input-bg: #fff; --shadow: 8px 8px 0px #000;
+        }
+        [data-theme="brutal"][data-mode="light"] { 
+            --bg: #fff; --text: #000; --accent: #00ffff; --card: #fff; --border: 4px solid #000; --placeholder: #999; --input-bg: #fff; --shadow: 8px 8px 0px #000;
+        }
+
+        /* Future Glass */
+        [data-theme="glasspro"] { --font: 'Manrope'; --radius: 20px; }
+        [data-theme="glasspro"][data-mode="dark"] { 
+            --bg: #020617; --text: #fff; --accent: #22d3ee; --card: rgba(15, 23, 42, 0.8); --border: 1px solid rgba(255,255,255,0.2); --blur: 40px; --placeholder: #475569; --input-bg: rgba(0,0,0,0.3);
+        }
+        [data-theme="glasspro"][data-mode="light"] { 
+            --bg: #f8fafc; --text: #0f172a; --accent: #6366f1; --card: rgba(255, 255, 255, 0.8); --border: 1px solid rgba(0,0,0,0.1); --blur: 30px; --placeholder: #94a3b8; --input-bg: rgba(255,255,255,0.5);
+        }
+
+        /* --- GLOBAL RESETS --- */
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font), sans-serif;
+            transition: background-color var(--transition), color var(--transition);
+            overflow-x: hidden;
+        }
+
+        input {
+            background-color: var(--input-bg) !important;
+            color: var(--text) !important;
+            border: var(--border) !important;
+            border-radius: var(--radius);
+            transition: all var(--transition);
+        }
+        input::placeholder { color: var(--placeholder) !important; opacity: 1; }
+
+        .theme-card {
+            background: var(--card);
+            backdrop-filter: blur(var(--blur, 0px));
+            border: var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow, none);
+            color: var(--text);
+            transition: all var(--transition);
+        }
+
+        .theme-button {
+            background-color: var(--accent);
+            border-radius: var(--radius);
+            color: #fff;
+            box-shadow: var(--shadow, none);
+            transition: all var(--transition);
+        }
+        [data-theme="brutal"] .theme-button { color: #000; }
+
+        .dynamic-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 20%, var(--accent), transparent 40%),
+                        radial-gradient(circle at 80% 80%, var(--accent), transparent 40%);
+            opacity: 0.05;
+            filter: blur(80px);
+        }
+
+        /* Switchers */
+        .controls {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .switcher-group {
+            background: rgba(128,128,128,0.15);
+            backdrop-filter: blur(30px);
+            padding: 8px;
+            border-radius: 50px;
+            display: flex;
+            gap: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .dot {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: 0.2s;
+        }
+        .dot.active { border-color: white; transform: scale(1.2); box-shadow: 0 0 10px rgba(255,255,255,0.5); }
+    </style>
+</head>
+<body>
+    <div class="dynamic-bg"></div>
+
+    <!-- Nav -->
+    <nav class="p-8 flex justify-between items-center max-w-7xl mx-auto relative z-10">
+        <div class="text-3xl font-black italic tracking-tighter">TURAN<span style="color: var(--accent)">.IT</span></div>
+        <div class="flex gap-4">
+            <button onclick="toggleMode()" class="p-3 theme-card flex items-center justify-center">
+                <i data-lucide="moon" id="mode-icon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="min-h-[70vh] flex flex-col justify-center items-center text-center px-6 relative z-10">
+        <div class="animate__animated animate__fadeIn">
+            <h1 class="text-6xl md:text-9xl font-black mb-8 leading-none tracking-tighter uppercase">
+                Design <br/> <span style="color: var(--accent)">Evolution</span>
+            </h1>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto opacity-70 mb-12 font-medium">
+                Біздің дизайн тіліміз шекара білмейді. <br/>Төмендегі стильдерді ауыстырып көріңіз.
+            </p>
+            <div class="flex flex-col gap-6 items-center w-full max-w-md mx-auto">
+                <input type="text" placeholder="Жобаңыздың аты..." class="px-8 py-5 w-full outline-none focus:ring-4 focus:ring-[var(--accent)]/30 text-lg font-bold">
+                <a href="https://t.me/AI_landingvibe_bot" class="theme-button px-12 py-6 text-xl font-black inline-block uppercase tracking-widest w-full">
+                    БРИФ ТОЛТЫРУ
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style Showcase -->
+    <section class="py-32 px-6 max-w-7xl mx-auto relative z-10">
+        <div class="grid md:grid-cols-3 gap-10">
+            <div class="theme-card p-12 text-center card-hover">
+                <i data-lucide="layout" class="mx-auto mb-6 w-12 h-12" style="color: var(--accent)"></i>
+                <h3 class="text-2xl font-black mb-4 uppercase">UX/UI Дизайн</h3>
+                <p class="opacity-70 leading-relaxed font-medium">Пайдаланушыға ыңғайлы, заманауи интерфейстер.</p>
+            </div>
+            <div class="theme-card p-12 text-center card-hover">
+                <i data-lucide="code-2" class="mx-auto mb-6 w-12 h-12" style="color: var(--accent)"></i>
+                <h3 class="text-2xl font-black mb-4 uppercase">Таза Код</h3>
+                <p class="opacity-70 leading-relaxed font-medium">Жылдам, қауіпсіз және масштабталатын программалау.</p>
+            </div>
+            <div class="theme-card p-12 text-center card-hover">
+                <i data-lucide="rocket" class="mx-auto mb-6 w-12 h-12" style="color: var(--accent)"></i>
+                <h3 class="text-2xl font-black mb-4 uppercase">IT Стратегия</h3>
+                <p class="opacity-70 leading-relaxed font-medium">Бизнестің өсуіне арналған кешенді шешімдер.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Controls UI -->
+    <div class="controls">
+        <div class="switcher-group">
+            <button onclick="setMode('dark')" class="p-2 rounded-full hover:bg-white/10"><i data-lucide="moon" class="w-5 h-5"></i></button>
+            <button onclick="setMode('light')" class="p-2 rounded-full hover:bg-white/10"><i data-lucide="sun" class="w-5 h-5"></i></button>
+        </div>
+        <div class="switcher-group">
+            <div onclick="setTheme('ios', this)" class="dot active" style="background: #007AFF" title="iOS 26"></div>
+            <div onclick="setTheme('cyber', this)" class="dot" style="background: #ff0055" title="Cyberpunk"></div>
+            <div onclick="setTheme('minimal', this)" class="dot" style="background: #333333" title="Minimal"></div>
+            <div onclick="setTheme('royal', this)" class="dot" style="background: #d4af37" title="Royal"></div>
+            <div onclick="setTheme('web3', this)" class="dot" style="background: #8b5cf6" title="Web3"></div>
+            <div onclick="setTheme('neu', this)" class="dot" style="background: #bebebe" title="Neumorphism"></div>
+            <div onclick="setTheme('brutal', this)" class="dot" style="background: #ffff00" title="Brutalism"></div>
+            <div onclick="setTheme('glasspro', this)" class="dot" style="background: #22d3ee" title="Future Glass"></div>
+        </div>
+    </div>
+
+    <footer class="py-24 text-center opacity-40 text-xs tracking-widest uppercase relative z-10">
+        &copy; 2026 Turan.IT &bull; Powered by D OS 🐺
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        function setTheme(theme, el) {
+            document.documentElement.setAttribute('data-theme', theme);
+            document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+            if(el) el.classList.add('active');
+            lucide.createIcons();
+        }
+
+        function setMode(mode) {
+            document.documentElement.setAttribute('data-mode', mode);
+            const icon = mode === 'dark' ? 'moon' : 'sun';
+            document.getElementById('mode-icon').setAttribute('data-lucide', icon);
+            lucide.createIcons();
+        }
+
+        function toggleMode() {
+            const current = document.documentElement.getAttribute('data-mode');
+            setMode(current === 'dark' ? 'light' : 'dark');
+        }
+    </script>
+</body>
+</html>

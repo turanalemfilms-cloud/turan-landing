@@ -1,0 +1,4 @@
+#!/bin/bash
+# D OS Batch Runner - shortcut
+cd "$(dirname "$0")"
+./batch_runner.py "$@"

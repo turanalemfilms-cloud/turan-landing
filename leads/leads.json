@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Luna Restaurant",
+    "location": "Almaty",
+    "industry": "HoReCa",
+    "status": "potential",
+    "notes": "New restaurant opened in early 2026. Needs premium Royal or iOS style site.",
+    "foundAt": "2026-01-31"
+  },
+  {
+    "name": "Heiwa Coffee Shop",
+    "location": "Almaty",
+    "industry": "HoReCa",
+    "status": "potential",
+    "notes": "New coffee shop mentioned in local listings. Minimal or iOS style would fit perfectly.",
+    "foundAt": "2026-01-31"
+  }
+]

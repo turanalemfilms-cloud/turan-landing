@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+@theme {
+  /* Turan Brand Colors */
+  --color-turan-gold: #D4AF37;
+  --color-turan-bronze: #CD7F32;
+  --color-turan-dark: #0a0a0f;
+  --color-turan-navy: #0d0d14;
+  --color-turan-accent: #111118;
+  --color-turan-light: #E8E8E8;
+
+  /* Theme Colors */
+  --color-steppe: #8B7355;
+  --color-sky: #4A90D9;
+  --color-sunset: #E85A4F;
+  --color-forest: #2D5A27;
+  --color-royal: #6B3FA0;
+
+  /* Liquid Glass Colors */
+  --color-liquid-glass-bg: rgba(255, 255, 255, 0.03);
+  --color-liquid-glass-border: rgba(255, 255, 255, 0.08);
+  --color-liquid-glass-glow: rgba(212, 175, 55, 0.15);
+
+  /* Fonts */
+  --font-family-display: 'Inter', system-ui, sans-serif;
+  --font-family-body: 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font-family-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #000;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--color-turan-gold) 0%, var(--color-turan-bronze) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-dark {
+    background: linear-gradient(135deg, var(--color-turan-dark) 0%, var(--color-turan-navy) 50%, var(--color-turan-accent) 100%);
+  }
+
+  .bg-gradient-gold {
+    background: linear-gradient(135deg, var(--color-turan-gold) 0%, var(--color-turan-bronze) 100%);
+  }
+
+  /* Cinematic Cold Intro Background */
+  .bg-the-void {
+    background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #05050a 100%);
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bg-the-void::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.05;
+    pointer-events: none;
+  }
+
+  /* iOS 26 / Liquid Glass Effect */
+  .liquid-glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(30px) saturate(150%);
+    -webkit-backdrop-filter: blur(30px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 32px;
+    box-shadow: 
+      0 20px 50px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .liquid-glass-button {
+    background: linear-gradient(135deg, #D4AF37 0%, #CD7F32 100%);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .liquid-glass-button:hover {
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+
+  /* Shimmer effect for placeholders */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    animation: shimmer-anim 2s infinite;
+  }
+
+  @keyframes shimmer-anim {
+    100% { transform: translateX(100%); }
+  }
+
+  /* Blur overlay logic */
+  .blur-backdrop {
+    filter: blur(15px);
+    transform: scale(0.95);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .blur-backdrop-active {
+    filter: blur(0);
+    transform: scale(1);
+  }
+
+  /* iPhone 17 Pro Mockup */
+  .iphone-17-frame {
+    width: 320px;
+    height: 650px;
+    background: #111;
+    border: 8px solid #333;
+    border-radius: 48px;
+    position: relative;
+    box-shadow: 0 50px 100px -20px rgba(0,0,0,0.5), 0 30px 60px -30px rgba(0,0,0,0.5);
+    overflow: hidden;
+  }
+
+  .iphone-17-island {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 24px;
+    background: #000;
+    border-radius: 12px;
+    z-index: 50;
+  }
+
+  .iphone-17-screen {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  .chat-bubble-yellow {
+    background: #FFD700;
+    color: #000;
+    border-radius: 18px;
+    padding: 10px 16px;
+    font-weight: 700;
+    box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
+    border: 2px solid rgba(0,0,0,0.05);
+  }
+}

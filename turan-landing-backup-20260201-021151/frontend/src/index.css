@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+@theme {
+  /* Turan Brand Colors */
+  --color-turan-gold: #D4AF37;
+  --color-turan-bronze: #CD7F32;
+  --color-turan-dark: #0a0a0f;
+  --color-turan-navy: #0d0d14;
+  --color-turan-accent: #111118;
+  --color-turan-light: #E8E8E8;
+
+  /* Theme Colors */
+  --color-steppe: #8B7355;
+  --color-sky: #4A90D9;
+  --color-sunset: #E85A4F;
+  --color-forest: #2D5A27;
+  --color-royal: #6B3FA0;
+
+  /* Liquid Glass Colors */
+  --color-liquid-glass-bg: rgba(255, 255, 255, 0.03);
+  --color-liquid-glass-border: rgba(255, 255, 255, 0.08);
+  --color-liquid-glass-glow: rgba(212, 175, 55, 0.15);
+
+  /* Fonts */
+  --font-family-display: 'Inter', system-ui, sans-serif;
+  --font-family-body: 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font-family-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--color-turan-gold) 0%, var(--color-turan-bronze) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-dark {
+    background: linear-gradient(135deg, var(--color-turan-dark) 0%, var(--color-turan-navy) 50%, var(--color-turan-accent) 100%);
+  }
+
+  .bg-gradient-gold {
+    background: linear-gradient(135deg, var(--color-turan-gold) 0%, var(--color-turan-bronze) 100%);
+  }
+
+  /* The Void - Deep black gradient */
+  .bg-the-void {
+    background: radial-gradient(ellipse at center, #050508 0%, #000000 100%);
+  }
+
+  /* Classic glass effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* iOS 26 Liquid Glass Effect */
+  .liquid-glass {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.02) 50%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    backdrop-filter: blur(40px) saturate(150%);
+    -webkit-backdrop-filter: blur(40px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 24px;
+  }
+
+  .liquid-glass-expanding {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.02) 50%,
+      rgba(255, 255, 255, 0.04) 100%
+    );
+    backdrop-filter: blur(60px) saturate(180%);
+    -webkit-backdrop-filter: blur(60px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow:
+      0 16px 64px rgba(0, 0, 0, 0.4),
+      0 0 80px rgba(212, 175, 55, 0.08),
+      inset 0 2px 0 rgba(255, 255, 255, 0.15),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 32px;
+  }
+
+  .liquid-glass-chat {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(24px) saturate(120%);
+    -webkit-backdrop-filter: blur(24px) saturate(120%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+  }
+
+  .liquid-glass-button {
+    background: linear-gradient(
+      135deg,
+      rgba(212, 175, 55, 0.2) 0%,
+      rgba(205, 127, 50, 0.15) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow:
+      0 4px 24px rgba(212, 175, 55, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+  }
+
+  .liquid-glass-button:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(212, 175, 55, 0.3) 0%,
+      rgba(205, 127, 50, 0.25) 100%
+    );
+    box-shadow:
+      0 8px 32px rgba(212, 175, 55, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+
+  /* Floating UI elements */
+  .floating-controls {
+    position: fixed;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 12px 20px;
+  }
+
+  /* Blur overlay for popup */
+  .blur-backdrop {
+    filter: blur(8px);
+    transform: scale(1.02);
+    transition: filter 0.5s ease, transform 0.5s ease;
+  }
+
+  .blur-backdrop-active {
+    filter: blur(0);
+    transform: scale(1);
+  }
+
+  /* Khaby Lame gesture animation */
+  @keyframes khaby-gesture {
+    0%, 100% {
+      transform: translateX(0) rotate(0deg);
+    }
+    25% {
+      transform: translateX(10px) rotate(5deg);
+    }
+    50% {
+      transform: translateX(-5px) rotate(-3deg);
+    }
+    75% {
+      transform: translateX(5px) rotate(2deg);
+    }
+  }
+
+  .khaby-gesture {
+    animation: khaby-gesture 2s ease-in-out infinite;
+  }
+
+  /* Typewriter cursor */
+  @keyframes cursor-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  .typewriter-cursor {
+    animation: cursor-blink 1s step-end infinite;
+  }
+}

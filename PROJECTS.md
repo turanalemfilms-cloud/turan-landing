@@ -1,20 +1,16 @@
-# PROJECTS.md - Active Projects Context
+# Turan Landing - Website Service Launch Plan (2026-02-02)
 
-*This file tracks the big picture. What are we actually building?*
+## Phase 1: Infrastructure & Tools (Automated Setup)
+- [ ] **ClawdHub Setup**: Install `clawdhub` and discover relevant marketing/automation skills.
+- [ ] **GitHub Sync**: Initialize Git repository, connect to remote, and push current code.
+- [ ] **Perplexity Integration**: Configure and test for market research.
+- [ ] **ElevenLabs (sag) Setup**: Test Kazakh/Russian voice generation for site intro.
 
-## 🎬 Startup: Vibecoding & Films
-**Goal:** Build an autonomous AI production assistant (D OS) and explore the intersection of coding + creative media.
+## Phase 2: Market Preparation (Service Launch)
+- [ ] **Pricing Models**: Define 3 packages (Standard, Premium, Enterprise).
+- [ ] **Lead Generation Strategy**: Set up automated search for potential clients in Almaty/Kazakhstan.
+- [ ] **Portfolio Site (turan-landing)**: Final polish of the onboarding flow for public use.
+- [ ] **Pitch Deck / Script**: Draft the "Autonomous AI Website" value proposition.
 
-### 🤖 Project: D OS (Autonomous Assistant)
-- **Status:** Active / Bootstrapping
-- **Current Focus:**
-  - Establishing identity & memory (✅ done)
-  - Setting up autonomous loops (✅ cron jobs added)
-  - Next: Deepen "understanding" of the user's specific workflow.
-
-### 🏗️ Backlog / Ideas
-- [ ] **Knowledge Base:** Index Turan's past film notes/scripts if available.
-- [ ] **Tooling:** Add specific CLI tools for video/media processing (ffmpeg, etc.) later.
-
----
-*Updated automatically by D OS self-improvement loop.*
+## Phase 3: Reporting
+- [ ] **Daily Report (10:00 AM)**: Summary of tools installed, Git status, and ready-to-launch strategy.
