@@ -1,0 +1,13 @@
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+leads/leads.db
+turan-landing/backend/leads.db
+turan-landing-backup-20260201-021151/backend/leads.db
+node_modules/
+venv/
+__pycache__/
+.DS_Store
+*.pyc

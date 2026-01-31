@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "skills": {
+    "perplexity": {
+      "version": "1.0.0",
+      "installedAt": 1769903787878
+    },
+    "sag": {
+      "version": "1.0.0",
+      "installedAt": 1769903790537
+    }
+  }
+}
