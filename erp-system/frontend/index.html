@@ -3,126 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMPIRE OS v3.0 | Command Center</title>
+    <title>EMPIRE ERP v4.0 | Official Operations</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #030304; --card: rgba(15, 15, 18, 0.8); --accent: #00d4aa; }
+        :root { --bg: #08080a; --panel: #111114; --accent: #00d4aa; --border: rgba(255,255,255,0.05); }
         body { background-color: var(--bg); color: white; font-family: 'Plus Jakarta Sans', sans-serif; }
-        .glass { background: var(--card); backdrop-filter: blur(40px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .agent-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-        .neon-text { text-shadow: 0 0 10px rgba(0, 212, 170, 0.5); }
+        .erp-panel { background-color: var(--panel); border: 1px solid var(--border); }
+        .status-badge { font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+        .in_progress { background: rgba(0, 212, 170, 0.1); color: var(--accent); }
+        .blocked { background: rgba(255, 77, 77, 0.1); color: #ff4d4d; }
+        .pending { background: rgba(255, 204, 0, 0.1); color: #ffcc00; }
+        .completed { background: rgba(52, 211, 153, 0.1); color: #10b981; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
     </style>
 </head>
-<body class="h-screen flex overflow-hidden">
+<body class="flex h-screen overflow-hidden">
     <!-- Sidebar -->
-    <aside class="w-72 glass border-r border-white/5 flex flex-col p-8 space-y-10">
+    <aside class="w-64 erp-panel border-r flex flex-col p-6 space-y-8">
         <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 bg-[#00d4aa] rounded-full flex items-center justify-center text-black font-bold">🐺</div>
-            <div>
-                <div class="text-xl font-black tracking-tighter uppercase leading-none">Empire OS</div>
-                <div class="text-[10px] text-gray-500 font-bold tracking-widest uppercase">Take's Domain</div>
-            </div>
+            <div class="w-8 h-8 bg-emerald-500 rounded flex items-center justify-center text-black font-bold text-sm">E</div>
+            <span class="text-lg font-bold tracking-tighter uppercase">Empire ERP</span>
         </div>
-
-        <nav class="flex-1 space-y-4">
-            <div class="text-[10px] text-gray-600 uppercase tracking-widest font-bold">Strategic Control</div>
-            <button class="w-full text-left p-3 rounded-2xl bg-[#00d4aa]/10 text-[#00d4aa] font-bold transition-all">🛰️ Master View</button>
-            <button class="w-full text-left p-3 rounded-2xl text-gray-400 hover:bg-white/5 transition-all">💰 Financial Engine</button>
-            <button class="w-full text-left p-3 rounded-2xl text-gray-400 hover:bg-white/5 transition-all">🧩 Logic Flows</button>
+        <nav class="flex-1 space-y-1">
+            <button class="w-full text-left px-4 py-2 rounded-lg bg-emerald-500/10 text-emerald-400 font-bold text-sm">Dashboard</button>
+            <button class="w-full text-left px-4 py-2 rounded-lg text-gray-500 hover:bg-white/5 text-sm transition-all">Personnel</button>
+            <button class="w-full text-left px-4 py-2 rounded-lg text-gray-500 hover:bg-white/5 text-sm transition-all">Projects</button>
+            <button class="w-full text-left px-4 py-2 rounded-lg text-gray-500 hover:bg-white/5 text-sm transition-all">Finance</button>
         </nav>
-
-        <div class="p-6 glass rounded-[24px] border-emerald-500/20">
-            <div class="text-[10px] text-gray-500 uppercase mb-2">Emperor</div>
-            <div class="font-bold text-sm">Turan (Take)</div>
-            <div class="text-xs text-[#00d4aa] mt-1">Status: Authorizing</div>
-        </div>
+        <div class="text-[10px] text-gray-600 font-bold uppercase tracking-widest px-4 border-t border-white/5 pt-4">v4.0.0-stable</div>
     </aside>
 
-    <!-- Main -->
-    <main class="flex-1 overflow-y-auto p-12 relative">
-        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#00d4aa]/5 rounded-full blur-[150px] -z-10"></div>
-
-        <header class="flex justify-between items-start mb-12">
-            <div>
-                <h1 class="text-4xl font-extrabold tracking-tight mb-2">Command <span class="text-[#00d4aa]">Orchestrator</span></h1>
-                <p class="text-gray-500 font-medium">Unified management for D OS and Autonomous Agent Squad.</p>
+    <!-- Content -->
+    <main class="flex-1 flex flex-col overflow-hidden">
+        <header class="h-16 border-b border-white/5 flex items-center justify-between px-8 bg-black/20">
+            <div class="flex items-center space-x-4">
+                <span class="text-xs text-gray-500 font-bold uppercase tracking-widest">Global Ops Status:</span>
+                <span class="text-xs text-emerald-500 font-black animate-pulse">● SYSTEMS NOMINAL</span>
             </div>
-            <div class="flex space-x-4">
-                <div class="glass px-6 py-3 rounded-2xl text-center">
-                    <div class="text-[10px] text-gray-500 uppercase font-bold">Core Efficiency</div>
-                    <div class="text-xl font-bold accent">98.2%</div>
+            <div class="flex items-center space-x-4">
+                <div class="text-right">
+                    <div class="text-xs font-bold leading-none">Turan (Take)</div>
+                    <div class="text-[10px] text-gray-500 uppercase tracking-tighter">Emperor / CEO</div>
                 </div>
+                <div class="w-8 h-8 bg-gray-800 rounded-full border border-white/10"></div>
             </div>
         </header>
 
-        <!-- Agents Grid -->
-        <div class="mb-12">
-            <h2 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">Active Agent Squad</h2>
-            <div id="agents-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Dynamic Content -->
-            </div>
-        </div>
-
-        <!-- Task Pipeline -->
-        <div class="glass rounded-[40px] p-10">
-            <div class="flex justify-between items-center mb-8">
-                <h2 class="text-xl font-bold uppercase tracking-tight">Intelligence Stream & Tasks</h2>
-                <div class="flex space-x-2">
-                    <button class="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-xl text-xs font-bold transition-all">PAUSE ALL</button>
-                    <button class="px-4 py-2 bg-[#00d4aa] text-black rounded-xl text-xs font-bold transition-all">NEW INTEL</button>
+        <div class="flex-1 overflow-y-auto p-8 space-y-8">
+            <!-- Top Stats -->
+            <div class="grid grid-cols-4 gap-6">
+                <div class="erp-panel p-6 rounded-xl">
+                    <div class="text-[10px] text-gray-500 font-bold uppercase mb-1">Active Agents</div>
+                    <div class="text-2xl font-bold">6</div>
+                </div>
+                <div class="erp-panel p-6 rounded-xl">
+                    <div class="text-[10px] text-gray-500 font-bold uppercase mb-1">Total Tasks</div>
+                    <div class="text-2xl font-bold">3</div>
+                </div>
+                <div class="erp-panel p-6 rounded-xl">
+                    <div class="text-[10px] text-gray-500 font-bold uppercase mb-1">Operations (24h)</div>
+                    <div class="text-2xl font-bold" id="op-count">0</div>
+                </div>
+                <div class="erp-panel p-6 rounded-xl border-emerald-500/20">
+                    <div class="text-[10px] text-gray-500 font-bold uppercase mb-1">Potential ROI</div>
+                    <div class="text-2xl font-bold text-emerald-400">$70+</div>
                 </div>
             </div>
-            <div id="task-list" class="space-y-4">
-                <!-- Dynamic Content -->
+
+            <!-- Agents & KPI -->
+            <section class="erp-panel rounded-2xl overflow-hidden">
+                <div class="p-6 border-b border-white/5 bg-white/5 flex justify-between items-center">
+                    <h2 class="text-sm font-bold uppercase tracking-widest text-gray-400">Empire Personnel & KPI</h2>
+                </div>
+                <table class="w-full text-left text-xs">
+                    <thead class="text-gray-500 uppercase font-bold bg-black/40">
+                        <tr>
+                            <th class="px-6 py-3">Agent</th>
+                            <th class="px-6 py-3">Role</th>
+                            <th class="px-6 py-3">KPI Standard</th>
+                            <th class="px-6 py-3">Status</th>
+                            <th class="px-6 py-3">Last Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="agent-table-body" class="divide-y divide-white/5">
+                        <!-- Dynamic -->
+                    </tbody>
+                </table>
+            </section>
+
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                <!-- Task Pipeline -->
+                <section class="erp-panel rounded-2xl overflow-hidden">
+                    <div class="p-6 border-b border-white/5 bg-white/5">
+                        <h2 class="text-sm font-bold uppercase tracking-widest text-gray-400">Active Pipeline</h2>
+                    </div>
+                    <div id="task-list" class="divide-y divide-white/5">
+                        <!-- Dynamic -->
+                    </div>
+                </section>
+
+                <!-- Operation History -->
+                <section class="erp-panel rounded-2xl overflow-hidden">
+                    <div class="p-6 border-b border-white/5 bg-white/5 flex justify-between items-center">
+                        <h2 class="text-sm font-bold uppercase tracking-widest text-gray-400">Operational Log</h2>
+                        <span class="text-[10px] font-bold text-emerald-500">REAL-TIME</span>
+                    </div>
+                    <div id="op-list" class="divide-y divide-white/5 max-h-[400px] overflow-y-auto">
+                        <!-- Dynamic -->
+                    </div>
+                </section>
             </div>
         </div>
     </main>
 
     <script>
-        const ws = new WebSocket('ws://localhost:8003/ws');
+        const ws = new WebSocket('ws://localhost:8004/ws');
         
-        async function fetchState() {
-            const res = await fetch('http://localhost:8003/api/state');
-            const data = await res.json();
-            renderAgents(data.agents);
-            renderTasks(data.global_tasks);
-        }
+        ws.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            updateUI(data);
+        };
 
-        function renderAgents(agents) {
-            const grid = document.getElementById('agents-grid');
-            grid.innerHTML = Object.entries(agents).map(([id, info]) => `
-                <div class="glass p-6 rounded-[32px] border-white/5 transition-all agent-card">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center text-lg">🤖</div>
-                        <span class="text-[10px] ${info.status === 'Active' ? 'text-emerald-400 bg-emerald-400/10' : 'text-gray-500 bg-white/5'} px-2 py-1 rounded-md font-black uppercase tracking-tighter">${info.status}</span>
-                    </div>
-                    <div class="font-bold text-lg mb-1">${id}</div>
-                    <div class="text-[10px] text-gray-500 font-medium mb-4">${info.skills.join(' • ')}</div>
-                    <button class="w-full py-2 bg-white/5 hover:bg-[#00d4aa] hover:text-black rounded-xl text-[10px] font-bold transition-all uppercase">Open Workspace</button>
-                </div>
+        function updateUI(data) {
+            // Update Agents
+            document.getElementById('agent-table-body').innerHTML = data.agents.map(a => `
+                <tr class="hover:bg-white/5 transition-all">
+                    <td class="px-6 py-4 font-bold text-gray-200">${a.name}</td>
+                    <td class="px-6 py-4 text-gray-400">${a.role}</td>
+                    <td class="px-6 py-4"><span class="text-emerald-500/80 font-mono">${a.kpi}</span></td>
+                    <td class="px-6 py-4"><span class="status-badge ${a.status.toLowerCase()}">${a.status}</span></td>
+                    <td class="px-6 py-4 text-[10px] text-gray-500 italic">${a.last_action || '...'}</td>
+                </tr>
             `).join('');
-        }
 
-        function renderTasks(tasks) {
-            const list = document.getElementById('task-list');
-            list.innerHTML = tasks.reverse().map(t => `
-                <div class="flex items-center justify-between p-4 bg-white/5 rounded-[24px] border border-white/5">
+            // Update Tasks
+            document.getElementById('task-list').innerHTML = data.tasks.map(t => `
+                <div class="p-6 flex items-center justify-between hover:bg-white/5">
                     <div class="flex items-center space-x-4">
-                        <div class="text-xs font-black text-gray-600 mono">${t.id}</div>
+                        <div class="text-xs font-black text-gray-600 font-mono">${t.id}</div>
                         <div>
-                            <div class="font-bold text-sm text-gray-200">${t.title}</div>
-                            <div class="text-[10px] text-gray-500">${t.assigned_to} • ${new Date(t.timestamp).toLocaleTimeString()}</div>
+                            <div class="font-bold text-sm">${t.title}</div>
+                            <div class="text-[10px] text-gray-500 uppercase">${t.assignee} • Deadline: ${t.deadline}</div>
                         </div>
                     </div>
-                    <div class="text-[10px] font-bold px-3 py-1 bg-[#00d4aa]/10 text-[#00d4aa] rounded-full uppercase italic">Processing</div>
+                    <div class="flex items-center space-x-4">
+                        <div class="text-[10px] font-bold text-gray-400 uppercase border border-white/10 px-2 py-1 rounded">Stage: ${t.stage}</div>
+                        <span class="status-badge ${t.status}">${t.status}</span>
+                    </div>
                 </div>
-            `).join('') || '<div class="text-center py-10 text-gray-600 text-sm italic">No active operations...</div>';
-        }
+            `).join('');
 
-        ws.onmessage = () => fetchState();
-        fetchState();
-        setInterval(fetchState, 5000);
+            // Update Operations
+            document.getElementById('op-count').innerText = data.operations.length;
+            document.getElementById('op-list').innerHTML = data.operations.map(op => `
+                <div class="p-4 flex items-start space-x-3 hover:bg-white/5">
+                    <div class="text-[10px] text-gray-600 font-mono pt-1">${new Date(op.timestamp).toLocaleTimeString()}</div>
+                    <div>
+                        <div class="text-[10px]"><span class="font-black text-emerald-400">${op.user}</span> executed <span class="font-bold text-gray-300">${op.action}</span></div>
+                        <div class="text-[10px] text-gray-500 mt-1">${op.details}</div>
+                    </div>
+                </div>
+            `).join('') || '<div class="p-10 text-center text-gray-600 text-xs italic">Waiting for operations...</div>';
+        }
     </script>
 </body>
 </html>

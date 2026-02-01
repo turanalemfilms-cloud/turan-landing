@@ -1,0 +1,79 @@
+{
+  "agents": [
+    {
+      "id": "Emperor",
+      "name": "Turan (Take)",
+      "role": "Strategic Vision / CEO",
+      "kpi": "Revenue Growth / ROI",
+      "status": "Online",
+      "last_action": "Reviewing ERP"
+    },
+    {
+      "id": "Core",
+      "name": "D OS",
+      "role": "Orchestrator / CTO",
+      "kpi": "Agent Efficiency / Sync",
+      "status": "Optimized",
+      "last_action": "Architecting ERP v4"
+    },
+    {
+      "id": "LeadScout",
+      "name": "Lead Scout",
+      "role": "Lead Gen / Market Research",
+      "kpi": "5 High-intent Leads/Day",
+      "status": "Scouting",
+      "last_action": "Scanning Moltbook"
+    },
+    {
+      "id": "EconomicHunter",
+      "name": "Economic Hunter",
+      "role": "Finance / Tokenomics",
+      "kpi": "1 ROI Opportunity/Day",
+      "status": "Idle",
+      "last_action": "Analyzing virtual protocols"
+    },
+    {
+      "id": "FrontendDev",
+      "name": "Frontend Dev",
+      "role": "UI/UX / Rapid Prototyping",
+      "kpi": "Demo < 60 mins",
+      "status": "Idle",
+      "last_action": "Updating iOS 26 styles"
+    },
+    {
+      "id": "WebsiteBuilder",
+      "name": "Website Builder",
+      "role": "Site Gen / Supabase",
+      "kpi": "Draft < 2 hours",
+      "status": "Active",
+      "last_action": "Processing T-006"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T-001",
+      "title": "YouTube Shorts Automation",
+      "assignee": "LeadScout",
+      "status": "blocked",
+      "deadline": "2026-02-01 18:00",
+      "stage": "review"
+    },
+    {
+      "id": "T-003",
+      "title": "Moltbook Claim",
+      "assignee": "EconomicHunter",
+      "status": "pending",
+      "deadline": "2026-02-01 20:00",
+      "stage": "briefing"
+    },
+    {
+      "id": "T-006",
+      "title": "Abat Agency Landing Page",
+      "assignee": "WebsiteBuilder",
+      "status": "in_progress",
+      "deadline": "2026-02-01 17:30",
+      "stage": "coding"
+    }
+  ],
+  "operations": []
+}
