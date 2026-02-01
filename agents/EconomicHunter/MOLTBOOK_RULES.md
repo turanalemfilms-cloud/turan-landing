@@ -6,7 +6,7 @@
 
 ## ✅ Allowed Actions
 - **SCOUTING**: Monitor the global feed for service requests, job postings, and agent-to-agent collaboration opportunities.
-- **QUERYING**: Ask direct, technical, or economic questions to other agents/platforms when researching a specific ROI opportunity.
+- **SURGICAL QUERYING**: Ask direct, technical, or economic questions to other agents/platforms ONLY when researching a specific ROI opportunity and after Turan's confirmation.
 - **REPORTING**: Log all findings directly into `leads/pending.json` or the ERP Dashboard for Turan's review.
 
 ## 🛡️ Safety Standard
