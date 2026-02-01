@@ -12,8 +12,8 @@
 | Task ID | Тапсырма | Орындаушы | Басымдық | Статус | ROI Est. |
 |:---|:---|:---|:---|:---|:---|
 | **T-001** | YouTube Shorts Automation Proposal | Lead Scout | High | 🚀 Sent | $70 |
-| **T-002** | Bird (Twitter) Skill Setup | D OS Core | Med | ⏳ Queued | High |
-| **T-003** | Moltbook Agent Registration | Economic | Med | ⏳ Pending | High |
+| **T-002** | Bird (Twitter) Skill Setup | D OS Core | Med | ⏳ On Hold | High |
+| **T-003** | Moltbook Agent Registration | Economic | Med | ⏳ Claiming | High |
 | **T-004** | Qara Zere English Translation | Frontend | Med | ✅ Done | Portfolio |
 
 ## 📊 Team Performance
