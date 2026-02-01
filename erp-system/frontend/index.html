@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D OS ERP COMMAND CENTER</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0a0a0b; color: white; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .accent { color: #00d4aa; }
+        .critical { color: #ff4d4d; }
+    </style>
+</head>
+<body class="p-8">
+    <div class="max-w-6xl mx-auto">
+        <header class="flex justify-between items-center mb-8 border-b border-red-600 pb-4">
+            <h1 class="text-3xl font-bold tracking-tighter">🐺 D OS <span class="accent">COMMAND CENTER</span></h1>
+            <div id="uptime" class="text-gray-500 text-sm">SYNC: ONLINE</div>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <section class="glass p-6 rounded-2xl">
+                <h2 class="text-xl font-semibold mb-4 accent">🤖 SQUAD STATUS</h2>
+                <div id="markdown-content" class="text-gray-300 whitespace-pre-wrap font-mono text-sm leading-relaxed">
+                    Loading dashboard data...
+                </div>
+            </section>
+
+            <section class="glass p-6 rounded-2xl">
+                <h2 class="text-xl font-semibold mb-4 accent">📜 RECENT LOGS</h2>
+                <div id="logs-content" class="space-y-2 font-mono text-xs overflow-y-auto max-h-[400px]">
+                    Loading logs...
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        async function updateDashboard() {
+            try {
+                const statusRes = await fetch('http://localhost:8001/api/status');
+                const statusData = await statusRes.json();
+                document.getElementById('markdown-content').innerText = statusData.content || "No data available";
+
+                const logsRes = await fetch('http://localhost:8001/api/logs');
+                const logsData = await logsRes.json();
+                const logsHtml = logsData.logs.map(log => 
+                    `<div class="border-l-2 border-green-500 pl-2 bg-white/5 p-1 rounded">
+                        <span class="text-gray-500">[${new Date(log.timestamp).toLocaleTimeString()}]</span> 
+                        <span class="font-bold">${log.event}</span>: ${log.details}
+                    </div>`
+                ).join('');
+                document.getElementById('logs-content').innerHTML = logsHtml;
+            } catch (e) {
+                console.error("Dashboard Sync Error:", e);
+            }
+        }
+
+        setInterval(updateDashboard, 5000);
+        updateDashboard();
+    </script>
+</body>
+</html>
