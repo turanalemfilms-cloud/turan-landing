@@ -1,0 +1,41 @@
+{
+  "projects": [
+    {
+      "id": "P-001",
+      "name": "Website Builder Service",
+      "status": "Active",
+      "description": "AI-powered rapid landing page generation.",
+      "revenue_est": "$500/mo"
+    }
+  ],
+  "agents": [
+    {
+      "id": "Emperor",
+      "name": "Turan (Take)",
+      "role": "CEO",
+      "status": "Online",
+      "kpi": "ROI"
+    },
+    {
+      "id": "Core",
+      "name": "D OS",
+      "role": "CTO",
+      "status": "Optimized",
+      "kpi": "Sync"
+    },
+    {
+      "id": "LeadScout",
+      "name": "Lead Scout",
+      "role": "Lead Gen",
+      "status": "Idle",
+      "kpi": "5 Leads/Day"
+    },
+    {
+      "id": "WebsiteBuilder",
+      "name": "Website Builder",
+      "role": "Dev",
+      "status": "Active",
+      "kpi": "Speed"
+    }
+  ]
+}
