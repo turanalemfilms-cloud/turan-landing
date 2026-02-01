@@ -1,1 +1,2 @@
-{"timestamp": "2026-02-01T15:18:00Z", "event": "ERP_SYS_INIT", "details": "Started custom ERP backend within virtual environment."}
+{"timestamp": "2026-02-01T15:23:00Z", "event": "ERP_SYS_INIT", "details": "Started custom ERP backend within virtual environment."}
+{"timestamp": "2026-02-01T15:25:00Z", "event": "ERP_UPGRADE", "details": "Upgraded ERP Command Center to v2.0 with Manual Control & Premium UI."}
