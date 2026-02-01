@@ -23,6 +23,17 @@ async def get_status():
     except Exception as e:
         return {"error": str(e)}
 
+@app.post("/api/command")
+async def run_command(cmd: dict):
+    # Security: This is a local-only tool for Turan. 
+    # In a real production environment, we'd add strict auth.
+    try:
+        import subprocess
+        result = subprocess.run(cmd['command'], shell=True, capture_output=True, text=True)
+        return {"stdout": result.stdout, "stderr": result.stderr}
+    except Exception as e:
+        return {"error": str(e)}
+
 @app.get("/api/logs")
 async def get_logs():
     try:
