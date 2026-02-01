@@ -23,10 +23,11 @@ D OS — империяның "Миы", агенттер — "Қолдары", �
 ### 3. Automatic Production (ONDÍRYS)
 - **Agent**: Website Builder.
 - **Action**: 
-    - Analyze brief.
-    - Code a high-fidelity Demo (iOS 26 style).
-    - Deploy/Commit to `turan-landing` branch.
-- **Output**: Live demo link sent to D OS Core.
+    - Read Deep TZ from D OS Core.
+    - Code a UNIQUE, content-rich (8-12 blocks) landing page.
+    - Integrate high-quality visuals and custom animations.
+    - Deploy/Commit to unique client branch.
+- **Output**: Unique live demo link.
 
 ### 4. Delivery & Validation (TAPSYS)
 - **Action**: D OS sends sales pitch (Kazakh/Russian) to client via configured channel.
