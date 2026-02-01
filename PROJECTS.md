@@ -1,16 +1,20 @@
 # Turan Landing - Website Service Launch Plan (2026-02-02)
 
 ## Phase 1: Infrastructure & Tools (Automated Setup)
-- [ ] **ClawdHub Setup**: Install `clawdhub` and discover relevant marketing/automation skills.
-- [ ] **GitHub Sync**: Initialize Git repository, connect to remote, and push current code.
-- [ ] **Perplexity Integration**: Configure and test for market research.
-- [ ] **ElevenLabs (sag) Setup**: Test Kazakh/Russian voice generation for site intro.
+- [x] **GitHub Sync**: Projects pushed to TuranMural repository.
+- [x] **ClawdHub Setup**: Installed `perplexty` and `sag` skills.
+- [ ] **Moltbook Integration**: Register agent and handle X (Twitter) claim.
+- [ ] **Qara-Zere Portfolio**: Translate and prepare the English version as a prime example.
 
-## Phase 2: Market Preparation (Service Launch)
-- [ ] **Pricing Models**: Define 3 packages (Standard, Premium, Enterprise).
-- [ ] **Lead Generation Strategy**: Set up automated search for potential clients in Almaty/Kazakhstan.
-- [ ] **Portfolio Site (turan-landing)**: Final polish of the onboarding flow for public use.
-- [ ] **Pitch Deck / Script**: Draft the "Autonomous AI Website" value proposition.
+## Sales Funnel 1: "Demo-First" Strategy
+1. **Traffic**: Instagram Ads + SEO ➔ `turan-landing`.
+2. **Lead/Brief**: User completes the 9-step autonomous onboarding.
+3. **Demo Generation**: D OS automatically generates a "Preview Landing" based on the brief.
+4. **Sales Pitch**: Present the Demo ➔ Upsell to Full Version.
+5. **Payment**: Send payment link ➔ Secure funds.
+6. **Full Development**: Collect detailed specs (onboarding, flows, custom features).
+7. **Delivery**: Final Handover + 1 Round of Revisions.
+- [ ] **Value Prop**: "From Figma/Idea to Autonomous Lead-Gen Machine in 24h".
 
 ## Phase 3: Reporting
-- [ ] **Daily Report (10:00 AM)**: Summary of tools installed, Git status, and ready-to-launch strategy.
+- [ ] **Daily Report (10:00 AM)**: Summary of tools, Git, and ready-to-launch strategy.
