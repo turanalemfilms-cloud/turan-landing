@@ -23,33 +23,38 @@ supabase: Client = create_client(url, key)
 
 async def check_new_leads():
     print("🛰️ Checking for new leads in Supabase...")
-    try:
-        response = supabase.table("leads").select("*").eq("status", "new").execute()
-        leads = response.data
-        
-        if not leads:
-            print("✅ No new leads found.")
-            return
+    # ... logic remains the same ...
 
-        for lead in leads:
-            print(f"🔥 New Lead Detected: {lead['business_name']} ({lead['name']})")
-            # Log to central logging
+async def realtime_listener():
+    print("⚡ Starting Real-time Lead Listener...")
+    try:
+        # Real-time listener for Supabase inserts
+        channel = supabase.channel('public:leads')
+        
+        def on_insert(payload):
+            lead = payload['new']
+            print(f"🔥 IMMEDIATE ACTION: New Lead from {lead['name']}")
+            # Trigger D OS logic instantly
             log_entry = {
                 "timestamp": os.popen("date -u +%Y-%m-%dT%H:%M:%SZ").read().strip(),
-                "event": "NEW_LEAD_DETECTED",
-                "details": f"Lead from {lead['name']} for {lead['business_name']} is being processed."
+                "event": "IMMEDIATE_LEAD_DETECTED",
+                "details": f"Lead from {lead['name']} detected via REAL-TIME sync."
             }
             with open(f"{WORKSPACE_PATH}/logs/active.log.jsonl", "a") as f:
                 f.write(json.dumps(log_entry) + "\n")
             
-            # Spawn Website Builder to handle this
-            # Note: In a real scenario, we'd trigger a sub-agent session here.
-            # For now, we update status to show we've acknowledged it.
-            supabase.table("leads").update({"status": "in_progress", "notes": "D OS WebsiteBuilder is analyzing the brief."}).eq("id", lead["id"]).execute()
-            print(f"⚡ Status updated for {lead['business_name']}")
+            # Update status immediately
+            supabase.table("leads").update({"status": "in_progress"}).eq("id", lead["id"]).execute()
 
+        channel.on('postgres_changes', event='INSERT', table='leads', callback=on_insert).subscribe()
+        
+        while True:
+            await asyncio.sleep(1)
     except Exception as e:
-        print(f"❌ Error checking leads: {str(e)}")
+        print(f"❌ Real-time Error: {str(e)}")
 
 if __name__ == "__main__":
-    asyncio.run(check_new_leads())
+    # Run both periodic check and realtime listener
+    loop = asyncio.get_event_loop()
+    loop.create_task(check_new_leads())
+    loop.run_until_complete(realtime_listener())

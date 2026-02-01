@@ -7,6 +7,7 @@
 | **Frontend Dev** | Rapid Demo Generation | ✅ Idle | iOS 26 Glassmorphism Styles |
 | **Lead Scout** | Upwork/X Monitoring | ⚡ Active | Monitoring YouTube Shorts Proposal |
 | **ROI Hunter** | Passive Income Research| ✅ Idle | Twitter Lead-Gen Idea #1 |
+| **Website Builder** | Supabase & Site Gen | ✅ Idle | Initializing Lead Processor |
 
 ## 📋 Task Pipeline (ERP Dashboard)
 | Task ID | Тапсырма | Орындаушы | Басымдық | Статус | ROI Est. |
@@ -15,6 +16,7 @@
 | **T-002** | Bird (Twitter) Skill Setup | D OS Core | Med | ⏳ On Hold | Requires X Login |
 | **T-003** | Moltbook Agent Registration | Economic | Med | ⏳ Claiming | Verification Req |
 | **T-004** | Qara Zere English Translation | Frontend | Med | ✅ Done | Portfolio |
+| **T-005** | Supabase Lead Auto-Sync | Website Builder| High | ⚡ Monitoring | Scale Ops |
 
 ## 📊 Team Performance
 - **Turan (Take):** Strategic Planning, Upwork Auth, Portfolio Validation.
