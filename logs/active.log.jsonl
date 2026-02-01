@@ -1,2 +1,4 @@
 {"timestamp": "2026-02-01T15:23:00Z", "event": "ERP_SYS_INIT", "details": "Started custom ERP backend within virtual environment."}
 {"timestamp": "2026-02-01T15:25:00Z", "event": "ERP_UPGRADE", "details": "Upgraded ERP Command Center to v2.0 with Manual Control & Premium UI."}
+{"timestamp": "2026-02-01T10:46:45Z", "event": "NEW_LEAD_DETECTED", "details": "Lead from \u0422\u04b1\u0440\u0430\u043d (Abat Agency) is being processed."}
+{"timestamp": "2026-02-01T10:46:45Z", "event": "NEW_LEAD_DETECTED", "details": "Lead from \u0422\u04b1\u0440\u0430\u043d (Abat agency) is being processed."}

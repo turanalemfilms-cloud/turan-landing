@@ -1,0 +1,24 @@
+{
+  "flow_id": "lead_to_demo",
+  "name": "New Lead to Demo Generation",
+  "steps": [
+    {
+      "step": 1,
+      "name": "Analyze Brief",
+      "action": "agent_call",
+      "params": { "agent": "WebsiteBuilder", "task": "Summarize brief for business: {business_name}" }
+    },
+    {
+      "step": 2,
+      "name": "Generate Demo Code",
+      "action": "exec",
+      "params": { "command": "source erp-system/venv/bin/activate && python3 scripts/generate_demo.py --lead {lead_id}" }
+    },
+    {
+      "step": 3,
+      "name": "Notify Emperor",
+      "action": "message",
+      "params": { "channel": "telegram", "text": "🔥 FLOW COMPLETE: Demo for {business_name} is ready for review." }
+    }
+  ]
+}
