@@ -3,126 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMPIRE OS v7.0 | Integrated Master</title>
+    <title>EMPIRE OS v8.0 | Supabase Central</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #050508; --panel: #0e0e12; --accent: #00d4aa; --border: rgba(255,255,255,0.05); }
-        body { background-color: var(--bg); color: white; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        :root { --bg: #040406; --panel: #0c0c0f; --accent: #00d4aa; --border: rgba(255,255,255,0.05); }
+        body { background-color: var(--bg); color: white; font-family: 'Plus Jakarta Sans', sans-serif; overflow: hidden; }
         .glass { background-color: var(--panel); border: 1px solid var(--border); backdrop-filter: blur(40px); }
         .sidebar-btn.active { background: rgba(0, 212, 170, 0.1); color: var(--accent); border-right: 3px solid var(--accent); }
-        .mono { font-family: 'JetBrains Mono', monospace; }
         .status-badge { font-size: 9px; font-weight: 800; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
         .in_progress { background: rgba(0, 212, 170, 0.1); color: var(--accent); }
         .new { background: rgba(52, 211, 153, 0.1); color: #10b981; }
-        .blocked { background: rgba(255, 77, 77, 0.1); color: #ff4d4d; }
+        .chat-msg { animation: slideIn 0.3s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
     </style>
 </head>
-<body class="flex h-screen overflow-hidden">
+<body class="flex h-screen">
     <!-- Sidebar -->
     <aside class="w-64 glass border-r flex flex-col p-6 space-y-8">
         <div class="flex items-center space-x-3 mb-4">
-            <div class="w-10 h-10 bg-[#00d4aa] rounded-xl flex items-center justify-center text-black font-black text-xl">E</div>
-            <span class="text-xl font-black tracking-tighter uppercase">Empire OS</span>
+            <div class="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center text-black font-black">8</div>
+            <span class="text-xl font-black tracking-tighter">EMPIRE <span class="text-emerald-500">OS</span></span>
         </div>
         <nav class="flex-1 space-y-1">
-            <button onclick="switchView('dashboard')" id="btn-dashboard" class="sidebar-btn active w-full text-left px-4 py-3 rounded-lg text-sm font-bold transition-all">🛰️ Master View</button>
-            <button onclick="switchView('crm')" id="btn-crm" class="sidebar-btn w-full text-left px-4 py-3 rounded-lg text-gray-500 hover:text-white text-sm font-bold transition-all">📈 Website CRM</button>
-            <button onclick="switchView('mind')" id="btn-context" class="sidebar-btn w-full text-left px-4 py-3 rounded-lg text-gray-500 hover:text-white text-sm font-bold transition-all">🧠 Empire Mind</button>
-            <button onclick="switchView('terminal')" id="btn-terminal" class="sidebar-btn w-full text-left px-4 py-3 rounded-lg text-gray-500 hover:text-white text-sm font-bold transition-all">⌨️ Terminal</button>
+            <button onclick="switchView('dashboard')" id="btn-dashboard" class="sidebar-btn active w-full text-left px-4 py-3 rounded-lg text-sm font-bold transition-all">🛰️ Master Hub</button>
+            <button onclick="switchView('projects')" id="btn-projects" class="sidebar-btn w-full text-left px-4 py-3 rounded-lg text-gray-500 hover:text-white text-sm font-bold transition-all">💼 Global Portfolio</button>
+            <button onclick="switchView('chat')" id="btn-chat" class="sidebar-btn w-full text-left px-4 py-3 rounded-lg text-gray-500 hover:text-white text-sm font-bold transition-all">💬 Agent Comms</button>
+            <button onclick="switchView('mind')" id="btn-mind" class="sidebar-btn w-full text-left px-4 py-3 rounded-lg text-gray-500 hover:text-white text-sm font-bold transition-all">🧠 System Mind</button>
         </nav>
-        <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-            <div class="text-[9px] text-gray-600 font-black uppercase mb-1">Authenticated</div>
-            <div class="text-xs font-bold">Take (Turan)</div>
+        <div class="p-4 bg-white/5 rounded-2xl">
+            <div class="text-[9px] text-gray-600 font-black uppercase mb-1">Take's Sovereignty</div>
+            <div class="text-xs font-bold text-emerald-500">AUTHENTICATED</div>
         </div>
     </aside>
 
     <!-- Main -->
     <main class="flex-1 flex flex-col overflow-hidden relative">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-[#00d4aa]/5 rounded-full blur-[120px] -z-10"></div>
-        <header class="h-16 border-b border-white/5 flex items-center justify-between px-8 bg-black/20">
-            <div id="view-title" class="text-xs font-black uppercase tracking-widest text-[#00d4aa]">Operational Status</div>
-            <div id="sync-status" class="text-[10px] text-emerald-500 font-black tracking-tighter">● LIVE CONNECTION</div>
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-[#00d4aa]/5 rounded-full blur-[150px] -z-10"></div>
+        <header class="h-16 border-b border-white/5 flex items-center justify-between px-8 bg-black/40">
+            <div id="view-title" class="text-xs font-black uppercase tracking-widest text-[#00d4aa]">Supabase Synced Core</div>
+            <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                <span class="text-[10px] font-bold">DATABASE: CONNECTED</span>
+            </div>
         </header>
         <div id="content-area" class="flex-1 overflow-y-auto p-8"></div>
     </main>
 
-    <!-- View Templates -->
+    <!-- Templates -->
     <template id="view-dashboard">
         <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
             <div class="xl:col-span-2 space-y-8">
-                <div class="glass p-8 rounded-[32px]">
-                    <h2 class="text-xs font-black text-gray-500 uppercase tracking-[0.2em] mb-6">Imperial Operations</h2>
-                    <div id="op-log" class="space-y-4 max-h-[500px] overflow-y-auto pr-4"></div>
+                <div class="glass p-10 rounded-[48px]">
+                    <h2 class="text-xs font-black text-gray-500 uppercase tracking-widest mb-8">Operational History</h2>
+                    <div id="op-list" class="space-y-4"></div>
                 </div>
             </div>
             <div class="space-y-8">
-                <div class="glass p-6 rounded-[32px]">
-                    <h2 class="text-xs font-black text-gray-500 uppercase tracking-widest mb-6">Active Squad</h2>
+                <div class="glass p-8 rounded-[40px]">
+                    <h2 class="text-xs font-black text-gray-500 uppercase mb-6 tracking-widest">Imperial Squad</h2>
                     <div id="agent-list" class="space-y-3"></div>
-                </div>
-                <div class="glass p-6 rounded-[32px] border-emerald-500/20">
-                    <h2 class="text-xs font-black text-emerald-500 uppercase mb-2">Empire Valuation</h2>
-                    <div class="text-3xl font-black tracking-tighter">$70.00</div>
-                    <p class="text-[9px] text-gray-500 mt-1 uppercase">Total Unlocked Potential</p>
                 </div>
             </div>
         </div>
     </template>
 
-    <template id="view-crm">
+    <template id="view-projects">
         <div class="space-y-8">
             <div class="flex justify-between items-center">
-                <h2 class="text-3xl font-black tracking-tighter">Website Builder <span class="text-[#00d4aa]">CRM</span></h2>
-                <div class="flex space-x-2">
-                    <div class="glass px-4 py-2 rounded-xl text-xs font-bold" id="crm-count">0 Leads</div>
-                </div>
+                <h2 class="text-3xl font-black">Active Businesses</h2>
+                <button class="px-6 py-2 border border-white/10 rounded-xl text-xs font-bold hover:bg-white/5">+ New Venture</button>
+            </div>
+            <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </template>
+
+    <template id="view-website-crm">
+        <div class="space-y-8">
+            <div class="flex items-center space-x-4">
+                <button onclick="switchView('projects')" class="p-2 hover:bg-white/5 rounded-full text-gray-500">←</button>
+                <h2 class="text-3xl font-black">Website Builder <span class="text-emerald-500">CRM</span></h2>
             </div>
             <div class="glass rounded-[32px] overflow-hidden">
                 <table class="w-full text-left text-sm">
-                    <thead class="bg-white/5 text-gray-500 uppercase font-black text-[9px] tracking-widest border-b border-white/5">
+                    <thead class="bg-white/5 text-gray-500 uppercase font-black text-[9px] border-b border-white/5">
                         <tr>
-                            <th class="px-6 py-4">Client / Business</th>
+                            <th class="px-6 py-4">Client</th>
+                            <th class="px-6 py-4">Business</th>
                             <th class="px-6 py-4">Status</th>
-                            <th class="px-6 py-4">Assignee</th>
-                            <th class="px-6 py-4 text-right">Brief</th>
+                            <th class="px-6 py-4 text-right">Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="crm-table" class="divide-y divide-white/5"></tbody>
+                    <tbody id="lead-table" class="divide-y divide-white/5"></tbody>
                 </table>
             </div>
         </div>
     </template>
 
-    <template id="view-mind">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="space-y-8">
-                <h2 class="text-xl font-bold uppercase tracking-widest text-gray-500">Core Architecture</h2>
-                <div class="glass p-8 rounded-[32px] text-xs leading-relaxed text-gray-400 whitespace-pre-wrap mono" id="ctx-mission"></div>
-            </div>
-            <div class="space-y-8">
-                <h2 class="text-xl font-bold uppercase tracking-widest text-gray-500">Standards & Identity</h2>
-                <div class="glass p-8 rounded-[32px] text-xs leading-relaxed text-gray-400 whitespace-pre-wrap mono" id="ctx-standard"></div>
+    <template id="view-chat">
+        <div class="h-full flex flex-col space-y-6">
+            <h2 class="text-3xl font-black">Internal <span class="text-emerald-500">Agent Comms</span></h2>
+            <div id="chat-area" class="flex-1 glass rounded-[40px] p-8 overflow-y-auto space-y-4"></div>
+            <div class="flex space-x-4">
+                <input id="chat-input" class="flex-1 glass border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-emerald-500" placeholder="Message as Emperor...">
+                <button onclick="sendChat()" class="px-10 py-4 bg-emerald-500 text-black font-black rounded-2xl hover:scale-105 transition-all uppercase">Broadcast</button>
             </div>
         </div>
     </template>
 
     <script>
-        let masterData = {};
-        const fetchInterval = 3000;
+        let state = {};
+        const ws = new WebSocket('ws://localhost:8005/ws');
 
-        async function updateState() {
-            try {
-                const res = await fetch('http://localhost:8005/api/master-state');
-                masterData = await res.json();
-                render();
-            } catch (e) {
-                document.getElementById('sync-status').innerText = 'OFFLINE';
-                document.getElementById('sync-status').className = 'text-[10px] text-red-500 font-black tracking-tighter';
-            }
-        }
+        ws.onmessage = (e) => {
+            state = JSON.parse(e.data);
+            render();
+        };
 
         function switchView(id) {
             window.currentView = id;
@@ -130,63 +128,73 @@
             const template = document.getElementById(`view-${id}`);
             area.innerHTML = '';
             area.appendChild(template.content.cloneNode(true));
-            document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active', 'text-white'));
-            document.getElementById(`btn-${id}`).classList.add('active');
+            document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
+            const sideBtn = document.getElementById(`btn-${id}`);
+            if(sideBtn) sideBtn.classList.add('active');
             render();
         }
 
         function render() {
-            if (!masterData.logs) return;
+            if (!state.agents) return;
 
             if (window.currentView === 'dashboard') {
-                document.getElementById('op-log').innerHTML = masterData.logs.reverse().map(l => `
-                    <div class="flex items-start space-x-4 border-l border-white/5 pl-6 pb-6 relative group">
-                        <div class="absolute -left-[3px] top-1.5 w-1.5 h-1.5 bg-gray-700 group-hover:bg-[#00d4aa] rounded-full transition-all"></div>
+                document.getElementById('op-list').innerHTML = state.operations.map(op => `
+                    <div class="flex items-start space-x-4 border-l border-emerald-500/20 pl-6 pb-4">
                         <div class="flex-1">
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="text-[10px] font-black text-gray-500 uppercase tracking-tighter">${l.event}</span>
-                                <span class="text-[10px] text-gray-700 mono">${new Date(l.timestamp).toLocaleTimeString()}</span>
-                            </div>
-                            <p class="text-xs text-gray-400">${l.details}</p>
+                            <div class="text-[10px] font-black uppercase text-emerald-500">${op.action}</div>
+                            <p class="text-xs text-gray-400">${op.details}</p>
+                            <div class="text-[9px] text-gray-600 mt-1">${op.user} • ${new Date(op.timestamp).toLocaleTimeString()}</div>
                         </div>
                     </div>
                 `).join('');
-
-                document.getElementById('agent-list').innerHTML = masterData.agents.map(a => `
-                    <div class="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5">
-                        <div>
-                            <div class="text-xs font-bold text-gray-200">${a.name}</div>
-                            <div class="text-[9px] text-gray-600 font-bold uppercase tracking-tighter">${a.role}</div>
-                        </div>
-                        <span class="text-[9px] font-black uppercase px-2 py-1 rounded bg-emerald-500/10 text-emerald-500">${a.status}</span>
+                document.getElementById('agent-list').innerHTML = state.agents.map(a => `
+                    <div class="flex items-center justify-between p-4 bg-white/5 rounded-2xl">
+                        <div class="text-sm font-bold">${a.name}</div>
+                        <span class="status-badge ${a.status.toLowerCase()}">${a.status}</span>
                     </div>
                 `).join('');
             }
 
-            if (window.currentView === 'crm') {
-                document.getElementById('crm-count').innerText = `${masterData.leads.length} Active Leads`;
-                document.getElementById('crm-table').innerHTML = masterData.leads.map(l => `
-                    <tr class="hover:bg-white/5 group transition-all">
-                        <td class="px-6 py-6">
-                            <div class="text-sm font-black text-gray-200">${l.business_name}</div>
-                            <div class="text-[10px] text-gray-500 font-medium">${l.name} • ${l.email}</div>
-                        </td>
+            if (window.currentView === 'projects') {
+                document.getElementById('project-grid').innerHTML = state.projects.map(p => `
+                    <div onclick="switchView('website-crm')" class="glass p-10 rounded-[48px] border-white/5 hover:border-emerald-500/40 cursor-pointer transition-all">
+                        <h3 class="text-2xl font-black mb-2">${p.name}</h3>
+                        <p class="text-xs text-gray-500">${p.description}</p>
+                    </div>
+                `).join('');
+            }
+
+            if (window.currentView === 'website-crm') {
+                document.getElementById('lead-table').innerHTML = state.leads.map(l => `
+                    <tr>
+                        <td class="px-6 py-6 font-bold text-gray-200">${l.name}</td>
+                        <td class="px-6 py-6 text-gray-400">${l.business_name}</td>
                         <td class="px-6 py-6"><span class="status-badge ${l.status}">${l.status}</span></td>
-                        <td class="px-6 py-6 text-[10px] font-bold text-gray-400 tracking-widest">WEBSITE BUILDER</td>
-                        <td class="px-6 py-6 text-right">
-                            <button class="px-4 py-1.5 bg-white/5 group-hover:bg-[#00d4aa] group-hover:text-black rounded-lg text-[10px] font-black uppercase tracking-widest transition-all">View Brief</button>
-                        </td>
+                        <td class="px-6 py-6 text-right"><button class="text-[10px] font-black uppercase text-[#00d4aa]">Manage</button></td>
                     </tr>
                 `).join('');
             }
 
-            if (window.currentView === 'mind') {
-                document.getElementById('ctx-mission').innerText = masterData.context.mission;
-                document.getElementById('ctx-standard').innerText = masterData.context.standard;
+            if (window.currentView === 'chat') {
+                document.getElementById('chat-area').innerHTML = state.chat.reverse().map(m => `
+                    <div class="chat-msg p-4 bg-white/5 rounded-3xl border border-white/5 max-w-[80%] ${m.sender === 'Emperor' ? 'ml-auto border-emerald-500/20' : ''}">
+                        <div class="text-[9px] font-black uppercase text-gray-500 mb-1">${m.sender} • ${new Date(m.timestamp).toLocaleTimeString()}</div>
+                        <div class="text-sm text-gray-200">${m.text}</div>
+                    </div>
+                `).join('');
             }
         }
 
-        setInterval(updateState, fetchInterval);
+        async function sendChat() {
+            const input = document.getElementById('chat-input');
+            await fetch('http://localhost:8005/api/chat/send', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ sender: 'Emperor', text: input.value, type: 'info' })
+            });
+            input.value = '';
+        }
+
         switchView('dashboard');
     </script>
 </body>
