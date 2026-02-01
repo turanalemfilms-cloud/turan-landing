@@ -3,61 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMPIRE ERP v8.5 | Sovereign Command</title>
+    <title>EMPIRE OS v9.0 | Autonomous Core</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #030305; --panel: #0a0a0d; --accent: #00d4aa; --border: rgba(255,255,255,0.05); }
+        :root { --bg: #020204; --panel: #08080a; --accent: #00d4aa; --border: rgba(255,255,255,0.05); }
         body { background-color: var(--bg); color: white; font-family: 'Plus Jakarta Sans', sans-serif; overflow: hidden; }
-        .glass { background-color: var(--panel); border: 1px solid var(--border); backdrop-filter: blur(40px); }
-        .sidebar-btn.active { background: rgba(0, 212, 170, 0.1); color: var(--accent); border-right: 4px solid var(--accent); }
-        .status-badge { font-size: 9px; font-weight: 800; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
-        .in_progress { background: rgba(0, 212, 170, 0.1); color: var(--accent); }
-        .new { background: rgba(52, 211, 153, 0.1); color: #10b981; }
+        .glass { background-color: var(--panel); border: 1px solid var(--border); backdrop-filter: blur(50px); }
+        .sidebar-btn.active { background: rgba(0, 212, 170, 0.1); color: var(--accent); box-shadow: inset -4px 0 0 var(--accent); }
+        .status-badge { font-size: 8px; font-weight: 900; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; }
+        .active, .online { color: #10b981; background: rgba(16, 185, 129, 0.1); }
+        .idle { color: #6b7280; background: rgba(107, 114, 128, 0.1); }
         .mono { font-family: 'JetBrains Mono', monospace; }
-        .chat-bubble { animation: fadeIn 0.3s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+        .chat-bubble { animation: slideUp 0.2s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
     </style>
 </head>
 <body class="flex h-screen">
     <!-- Sidebar -->
     <aside class="w-72 glass border-r flex flex-col p-8 space-y-10">
         <div class="flex items-center space-x-4">
-            <div class="w-12 h-12 bg-gradient-to-br from-[#00d4aa] to-emerald-700 rounded-2xl flex items-center justify-center text-black font-black text-2xl shadow-[0_0_20px_rgba(0,212,170,0.3)]">W</div>
+            <div class="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-black font-black text-2xl shadow-[0_0_20px_rgba(0,212,170,0.4)]">9</div>
             <div>
-                <span class="text-xl font-black tracking-tighter block leading-none text-white">EMPIRE OS</span>
-                <span class="text-[9px] font-black text-gray-600 tracking-[0.3em] uppercase mt-1">Sovereign v8.5</span>
+                <span class="text-xl font-black tracking-tighter block text-white">EMPIRE OS</span>
+                <span class="text-[8px] font-black text-emerald-500 tracking-[0.4em] uppercase">Autonomous v9</span>
             </div>
         </div>
         
-        <nav class="flex-1 space-y-2">
-            <button onclick="switchView('dashboard')" id="btn-dashboard" class="sidebar-btn active w-full text-left px-5 py-3.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all">🛰️ Master View</button>
-            <button onclick="switchView('crm')" id="btn-crm" class="sidebar-btn w-full text-left px-5 py-3.5 rounded-xl text-gray-500 hover:text-white text-xs font-black uppercase tracking-widest transition-all">📈 Website CRM</button>
-            <button onclick="switchView('projects')" id="btn-projects" class="sidebar-btn w-full text-left px-5 py-3.5 rounded-xl text-gray-500 hover:text-white text-xs font-black uppercase tracking-widest transition-all">💼 Ventures</button>
-            <button onclick="switchView('chat')" id="btn-chat" class="sidebar-btn w-full text-left px-5 py-3.5 rounded-xl text-gray-500 hover:text-white text-xs font-black uppercase tracking-widest transition-all">💬 War Room</button>
-            <button onclick="switchView('mind')" id="btn-mind" class="sidebar-btn w-full text-left px-5 py-3.5 rounded-xl text-gray-500 hover:text-white text-xs font-black uppercase tracking-widest transition-all">🧠 System Mind</button>
+        <nav class="flex-1 space-y-1">
+            <button onclick="switchView('dashboard')" id="btn-dashboard" class="sidebar-btn active w-full text-left px-6 py-3.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all">🛰️ Operational Core</button>
+            <button onclick="switchView('crm')" id="btn-crm" class="sidebar-btn w-full text-left px-6 py-3.5 rounded-xl text-gray-500 hover:text-white text-xs font-black uppercase tracking-widest transition-all">📈 Master CRM</button>
+            <button onclick="switchView('skills')" id="btn-skills" class="sidebar-btn w-full text-left px-6 py-3.5 rounded-xl text-gray-500 hover:text-white text-xs font-black uppercase tracking-widest transition-all">⚡ System Skills</button>
+            <button onclick="switchView('chat')" id="btn-chat" class="sidebar-btn w-full text-left px-6 py-3.5 rounded-xl text-gray-500 hover:text-white text-xs font-black uppercase tracking-widest transition-all">💬 War Room</button>
+            <button onclick="switchView('mind')" id="btn-mind" class="sidebar-btn w-full text-left px-6 py-3.5 rounded-xl text-gray-500 hover:text-white text-xs font-black uppercase tracking-widest transition-all">🧠 System Mind</button>
         </nav>
 
         <div class="p-6 glass rounded-[32px] border-emerald-500/10">
-            <div class="text-[9px] text-gray-600 font-black uppercase tracking-widest mb-2">Authenticated User</div>
-            <div class="text-sm font-bold text-gray-200">Emperor Turan</div>
-            <div class="flex items-center space-x-2 mt-2">
-                <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
-                <span class="text-[9px] font-black text-emerald-500 uppercase">Secure Connection</span>
-            </div>
+            <div class="text-[9px] text-gray-600 font-black uppercase tracking-widest mb-2">Authority</div>
+            <div class="text-sm font-bold text-gray-200 leading-none">Take (Turan)</div>
+            <div class="text-[9px] text-emerald-500 font-bold mt-2 uppercase">Core Status: Optimal</div>
         </div>
     </aside>
 
     <!-- Main -->
     <main class="flex-1 flex flex-col overflow-hidden relative">
-        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-[#00d4aa]/5 rounded-full blur-[180px] -z-10"></div>
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-[#00d4aa]/5 rounded-full blur-[200px] -z-10"></div>
         
-        <header class="h-20 border-b border-white/5 flex items-center justify-between px-12 bg-black/20">
-            <div id="view-title" class="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500">Initializing Strategic Interface...</div>
-            <div class="flex space-x-4">
-                <button onclick="syncCloud()" class="px-6 py-2 glass rounded-full text-[10px] font-black uppercase tracking-widest hover:border-[#00d4aa]/50 transition-all">Sync Cloud</button>
+        <header class="h-20 border-b border-white/5 flex items-center justify-between px-12 bg-black/40">
+            <div id="view-title" class="text-[10px] font-black uppercase tracking-[0.5em] text-[#00d4aa]">Initializing...</div>
+            <div class="flex items-center space-x-6">
+                <div class="flex flex-col text-right">
+                    <span class="text-[10px] text-gray-600 font-bold uppercase">Sync Latency</span>
+                    <span class="text-xs font-black text-emerald-500">REAL-TIME</span>
+                </div>
+                <div class="w-3 h-3 bg-[#00d4aa] rounded-full animate-pulse shadow-[0_0_15px_#00d4aa]"></div>
             </div>
         </header>
 
@@ -66,46 +67,45 @@
 
     <!-- Templates -->
     <template id="view-dashboard">
-        <div class="space-y-12">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-                <div class="lg:col-span-2 space-y-10">
-                    <section class="glass p-10 rounded-[56px]">
-                        <h2 class="text-xs font-black text-gray-600 uppercase tracking-[0.3em] mb-10">Strategic Activity Stream</h2>
-                        <div id="op-list" class="space-y-6"></div>
-                    </section>
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-10">
+            <div class="xl:col-span-2 space-y-10">
+                <div class="glass p-10 rounded-[56px]">
+                    <h2 class="text-xs font-black text-gray-600 uppercase tracking-[0.3em] mb-10">Global Activity Protocol</h2>
+                    <div id="op-list" class="space-y-6"></div>
                 </div>
-                <div class="space-y-10">
-                    <section class="glass p-8 rounded-[48px]">
-                        <h2 class="text-xs font-black text-gray-600 uppercase tracking-widest mb-8">Active Agent Squad</h2>
-                        <div id="agent-list" class="space-y-4"></div>
-                    </section>
-                    <section class="glass p-8 rounded-[48px] border-emerald-500/20">
-                        <h2 class="text-xs font-black text-emerald-500 uppercase tracking-widest mb-4">Daily ROI Metrics</h2>
-                        <div class="text-5xl font-black tracking-tighter text-white">$70.00</div>
-                        <p class="text-[10px] text-gray-500 font-bold mt-2 tracking-widest">UNLOCKED REVENUE</p>
-                    </section>
+            </div>
+            <div class="space-y-10">
+                <div class="glass p-8 rounded-[48px]">
+                    <h2 class="text-xs font-black text-gray-600 uppercase tracking-widest mb-8">Active Agent Fleet</h2>
+                    <div id="agent-list" class="space-y-4"></div>
+                </div>
+                <div class="glass p-8 rounded-[48px] border-emerald-500/20">
+                    <h2 class="text-xs font-black text-emerald-500 uppercase tracking-widest mb-4">Total Empire ROI</h2>
+                    <div class="text-5xl font-black tracking-tighter text-white">$70.00</div>
+                    <p class="text-[9px] text-gray-500 font-bold mt-2 tracking-widest">VERIFIED POTENTIAL</p>
                 </div>
             </div>
         </div>
     </template>
 
+    <template id="view-skills">
+        <div class="space-y-10">
+            <h2 class="text-4xl font-black tracking-tighter">Integrated <span class="text-[#00d4aa]">Skills</span></h2>
+            <p class="text-gray-500 text-sm">Autonomous capabilities bridged from OpenClaw core.</p>
+            <div id="skills-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        </div>
+    </template>
+
     <template id="view-crm">
         <div class="space-y-10">
-            <div class="flex justify-between items-end">
-                <div>
-                    <h2 class="text-4xl font-black tracking-tight mb-2">Lead <span class="text-[#00d4aa]">Orchestrator</span></h2>
-                    <p class="text-gray-500 font-medium">Real-time pipeline from Turan Landing (Supabase)</p>
-                </div>
-                <div id="crm-stats" class="text-xs font-black text-emerald-500 uppercase tracking-widest">0 Active Leads</div>
-            </div>
+            <h2 class="text-4xl font-black tracking-tight mb-2">Unified <span class="text-[#00d4aa]">CRM Pipeline</span></h2>
             <div class="glass rounded-[48px] overflow-hidden">
                 <table class="w-full text-left text-sm">
                     <thead class="bg-white/[0.03] text-gray-500 uppercase font-black text-[10px] tracking-widest">
                         <tr>
-                            <th class="px-10 py-6">Identity / Entity</th>
+                            <th class="px-10 py-6">Client / Business</th>
                             <th class="px-10 py-6">Current Status</th>
-                            <th class="px-10 py-6">Assigned Unit</th>
-                            <th class="px-10 py-6 text-right">Strategic Action</th>
+                            <th class="px-10 py-6 text-right">Actions</th>
                         </tr>
                     </thead>
                     <tbody id="lead-table" class="divide-y divide-white/5"></tbody>
@@ -114,51 +114,26 @@
         </div>
     </template>
 
-    <template id="view-projects">
-        <div class="space-y-10">
-            <div class="flex justify-between items-center">
-                <h2 class="text-4xl font-black tracking-tighter">Imperial <span class="text-[#00d4aa]">Portfolio</span></h2>
-                <button class="px-10 py-4 bg-white text-black font-black text-xs rounded-[24px] uppercase tracking-widest hover:bg-[#00d4aa] transition-all">Initialize New Venture</button>
-            </div>
-            <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-        </div>
-    </template>
-
     <template id="view-chat">
-        <div class="h-[calc(100vh-200px)] flex flex-col space-y-8">
-            <div class="flex justify-between items-center">
-                <h2 class="text-4xl font-black tracking-tighter text-white italic">War <span class="text-[#00d4aa]">Room</span></h2>
-                <span class="text-[10px] font-black text-emerald-500 tracking-widest uppercase">Encrypted Multi-Agent Channel</span>
-            </div>
+        <div class="h-[calc(100vh-240px)] flex flex-col space-y-8">
+            <h2 class="text-4xl font-black tracking-tighter">Imperial <span class="text-[#00d4aa]">War Room</span></h2>
             <div id="chat-area" class="flex-1 glass rounded-[56px] p-10 overflow-y-auto space-y-6"></div>
             <div class="flex space-x-4">
-                <input id="chat-input" class="flex-1 glass border-white/5 rounded-[32px] px-10 py-6 text-sm font-bold outline-none focus:border-[#00d4aa] transition-all" placeholder="Broadcast order to the squad...">
-                <button onclick="sendChat()" class="px-14 py-6 bg-[#00d4aa] text-black font-black rounded-[32px] uppercase tracking-tighter hover:scale-105 transition-all shadow-[0_0_30px_rgba(0,212,170,0.3)]">Broadcast</button>
+                <input id="chat-input" class="flex-1 glass border-white/5 rounded-[32px] px-10 py-6 text-sm font-bold outline-none focus:border-emerald-500 transition-all" placeholder="Broadcast strategic order...">
+                <button onclick="sendChat()" class="px-14 py-6 bg-[#00d4aa] text-black font-black rounded-[32px] uppercase hover:scale-105 transition-all">Broadcast</button>
             </div>
         </div>
     </template>
 
     <template id="view-mind">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <div class="space-y-10">
-                <div>
-                    <h2 class="text-xs font-black text-gray-600 uppercase tracking-[0.4em] mb-4">Core Operating System</h2>
-                    <div class="glass p-10 rounded-[48px] text-xs leading-[1.8] text-gray-400 whitespace-pre-wrap mono" id="ctx-mission"></div>
-                </div>
-                <div>
-                    <h2 class="text-xs font-black text-gray-600 uppercase tracking-[0.4em] mb-4">Agent Soul</h2>
-                    <div class="glass p-10 rounded-[48px] text-xs leading-[1.8] text-[#00d4aa] whitespace-pre-wrap mono" id="ctx-soul"></div>
-                </div>
+            <div class="space-y-8">
+                <h2 class="text-xs font-black text-gray-600 uppercase tracking-[0.4em]">Empire OS Algorithm</h2>
+                <div class="glass p-10 rounded-[48px] text-xs leading-[1.8] text-gray-400 whitespace-pre-wrap mono" id="ctx-mission"></div>
             </div>
-            <div class="space-y-10">
-                <div>
-                    <h2 class="text-xs font-black text-gray-600 uppercase tracking-[0.4em] mb-4">Emperor's Profile</h2>
-                    <div class="glass p-10 rounded-[48px] text-xs leading-[1.8] text-emerald-500 whitespace-pre-wrap mono" id="ctx-user"></div>
-                </div>
-                <div>
-                    <h2 class="text-xs font-black text-gray-600 uppercase tracking-[0.4em] mb-4">Working Standards</h2>
-                    <div class="glass p-10 rounded-[48px] text-xs leading-[1.8] text-gray-400 whitespace-pre-wrap mono" id="ctx-standard"></div>
-                </div>
+            <div class="space-y-8">
+                <h2 class="text-xs font-black text-gray-600 uppercase tracking-[0.4em]">Working Standards</h2>
+                <div class="glass p-10 rounded-[48px] text-xs leading-[1.8] text-gray-400 whitespace-pre-wrap mono" id="ctx-standard"></div>
             </div>
         </div>
     </template>
@@ -179,11 +154,8 @@
             area.innerHTML = '';
             area.appendChild(template.content.cloneNode(true));
             document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
-            const sideBtn = document.getElementById(`btn-${id}`);
-            if(sideBtn) sideBtn.classList.add('active');
-            
-            const titles = { 'dashboard': 'Operational Master View', 'crm': 'Pipeline Management', 'projects': 'Business Portfolio', 'chat': 'Internal Communications', 'mind': 'Sovereign Context' };
-            document.getElementById('view-title').innerText = titles[id] || 'Empire OS';
+            const btn = document.getElementById(`btn-${id}`);
+            if(btn) btn.classList.add('active');
             render();
         }
 
@@ -192,15 +164,15 @@
 
             if (window.currentView === 'dashboard') {
                 document.getElementById('op-list').innerHTML = state.operations.map(op => `
-                    <div class="flex items-start space-x-6 pb-8 border-l border-white/5 pl-8 relative group">
-                        <div class="absolute -left-[4px] top-1 w-2 h-2 bg-emerald-500 rounded-full shadow-[0_0_10px_#10b981]"></div>
+                    <div class="flex items-start space-x-6 pb-8 border-l border-white/5 pl-8 relative">
+                        <div class="absolute -left-[4px] top-1.5 w-2 h-2 bg-emerald-500 rounded-full shadow-[0_0_10px_#10b981]"></div>
                         <div class="flex-1">
                             <div class="flex justify-between items-center mb-2">
-                                <span class="text-[10px] font-black text-emerald-500 uppercase tracking-widest">${op.action}</span>
+                                <span class="text-[10px] font-black text-[#00d4aa] uppercase tracking-widest">${op.action}</span>
                                 <span class="text-[9px] text-gray-700 mono">${new Date(op.timestamp).toLocaleTimeString()}</span>
                             </div>
-                            <p class="text-sm text-gray-300 font-medium">${op.details}</p>
-                            <div class="text-[9px] text-gray-600 font-black mt-2 uppercase tracking-tighter">Executor: ${op.user}</div>
+                            <p class="text-xs text-gray-400 font-medium">${op.details}</p>
+                            <div class="text-[8px] text-gray-600 font-black mt-2 uppercase tracking-tighter">Executor: ${op.user}</div>
                         </div>
                     </div>
                 `).join('');
@@ -215,8 +187,18 @@
                 `).join('');
             }
 
+            if (window.currentView === 'skills') {
+                document.getElementById('skills-grid').innerHTML = state.skills.map(s => `
+                    <div class="glass p-8 rounded-[40px] border-white/5 hover:border-[#00d4aa]/40 transition-all">
+                        <div class="w-10 h-10 bg-[#00d4aa]/10 text-[#00d4aa] rounded-xl flex items-center justify-center text-xl mb-6">⚡</div>
+                        <h3 class="text-lg font-black text-white leading-none">${s.name}</h3>
+                        <div class="text-[9px] text-gray-600 font-black uppercase mt-2 tracking-widest">Status: Ready</div>
+                        <button class="w-full mt-8 py-3 bg-white/5 hover:bg-white/10 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">Initialize</button>
+                    </div>
+                `).join('');
+            }
+
             if (window.currentView === 'crm') {
-                document.getElementById('crm-stats').innerText = `${state.leads.length} LIVE LEADS DETECTED`;
                 document.getElementById('lead-table').innerHTML = state.leads.map(l => `
                     <tr class="hover:bg-white/[0.02] transition-all">
                         <td class="px-10 py-8">
@@ -224,34 +206,19 @@
                             <div class="text-[10px] text-gray-500 font-bold uppercase tracking-tighter">${l.name} • ${l.email}</div>
                         </td>
                         <td class="px-10 py-8"><span class="status-badge ${l.status}">${l.status}</span></td>
-                        <td class="px-10 py-8 text-[10px] font-black text-gray-400 tracking-[0.2em] uppercase italic">Unit: Website Builder</td>
                         <td class="px-10 py-8 text-right">
-                            <button class="px-6 py-2 bg-white/5 hover:bg-[#00d4aa] hover:text-black rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">Execute Brief</button>
+                            <button class="px-6 py-2 bg-white/5 hover:bg-[#00d4aa] hover:text-black rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">Deploy Sub-Agent</button>
                         </td>
                     </tr>
                 `).join('');
             }
 
-            if (window.currentView === 'projects') {
-                document.getElementById('project-grid').innerHTML = state.projects.map(p => `
-                    <div onclick="switchView('crm')" class="glass p-10 rounded-[56px] border-white/5 hover:border-[#00d4aa]/40 cursor-pointer group transition-all">
-                        <div class="text-[10px] font-black text-[#00d4aa] uppercase tracking-[0.3em] mb-4">${p.status}</div>
-                        <h3 class="text-2xl font-black mb-4 group-hover:translate-x-1 transition-all">${p.name}</h3>
-                        <p class="text-xs text-gray-500 leading-relaxed mb-10">${p.description}</p>
-                        <div class="pt-8 border-t border-white/5 flex justify-between items-center">
-                            <span class="text-[10px] font-black text-gray-600 tracking-widest uppercase">Target ROI</span>
-                            <span class="text-sm font-black">${p.revenue_est}</span>
-                        </div>
-                    </div>
-                `).join('');
-            }
-
             if (window.currentView === 'chat') {
                 document.getElementById('chat-area').innerHTML = state.chat.reverse().map(m => `
-                    <div class="chat-bubble p-6 bg-white/[0.03] rounded-[32px] border border-white/5 max-w-[85%] ${m.sender === 'Emperor' ? 'ml-auto bg-emerald-500/5 border-emerald-500/20' : ''}">
-                        <div class="flex justify-between items-center mb-3">
-                            <span class="text-[10px] font-black uppercase ${m.sender === 'Emperor' ? 'text-emerald-400' : 'text-gray-500'} tracking-widest">${m.sender}</span>
-                            <span class="text-[9px] text-gray-700 mono">${new Date(m.timestamp).toLocaleTimeString()}</span>
+                    <div class="chat-bubble p-6 bg-white/[0.03] rounded-[32px] border border-white/5 max-w-[85%] ${m.sender === 'Emperor' ? 'ml-auto border-emerald-500/20' : ''}">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-[9px] font-black uppercase ${m.sender === 'Emperor' ? 'text-emerald-400' : 'text-gray-500'} tracking-widest">${m.sender}</span>
+                            <span class="text-[8px] text-gray-700 mono">${new Date(m.timestamp).toLocaleTimeString()}</span>
                         </div>
                         <div class="text-sm text-gray-300 font-medium leading-relaxed">${m.text}</div>
                     </div>
@@ -263,8 +230,6 @@
             if (window.currentView === 'mind') {
                 document.getElementById('ctx-mission').innerText = state.context.mission;
                 document.getElementById('ctx-standard').innerText = state.context.standard;
-                document.getElementById('ctx-user').innerText = state.context.user;
-                document.getElementById('ctx-soul').innerText = state.context.soul;
             }
         }
 
@@ -277,15 +242,6 @@
                 body: JSON.stringify({ sender: 'Emperor', text: input.value, type: 'info' })
             });
             input.value = '';
-        }
-
-        async function syncCloud() {
-            await fetch('http://localhost:8005/api/command', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ command: 'git add . && git commit -m "Manual Sync from ERP" && git push origin main' })
-            });
-            alert('Cloud Sync Initialized.');
         }
 
         switchView('dashboard');
