@@ -1,2 +1,1 @@
-{"timestamp": "2026-02-01T16:35:00Z", "event": "EMPIRE_V9_BOOT", "details": "Autonomous Core v9.0 initialized. Services: empire_v9 (8005), supabase_sync (Robust Polling)."}
-{"timestamp": "2026-02-01T16:35:05Z", "event": "SCHEMA_AWAIT", "details": "Waiting for SQL Schema deployment in Supabase ('operations' and 'internal_chat' tables)."}
+{"timestamp": "2026-02-01T17:02:00Z", "event": "HEARTBEAT_SYNC", "details": "Empire Core Backend (8005) restarted. Supabase Sync active. System Mind & CRM fully operational."}

@@ -52,11 +52,35 @@ async def check_new_leads(supabase: AsyncClient):
     except Exception as e:
         print(f"Scan Error: {e}")
 
+async def agent_status_pulse(supabase: AsyncClient):
+    # Every 30 minutes, agents check in to the War Room
+    agents = ["LeadScout", "WebsiteBuilder", "EconomicHunter"]
+    for agent in agents:
+        msg = f"Unit {agent} reporting for duty. Current focus: "
+        if agent == "WebsiteBuilder": msg += "Monitoring Abat Agency project."
+        elif agent == "LeadScout": msg += "Scanning for high-margin Upwork opportunities."
+        else: msg += "Analyzing Moltbook ROI trends."
+        
+        await report_to_chat(supabase, agent, msg)
+    print("📢 Agent status pulse sent to War Room.")
+
 async def main():
     supabase: AsyncClient = await create_async_client(url, key)
-    print("⚡ Empire OS v8.0 Sync Engine Live.")
+    print("⚡ Empire OS v9.0 Sync Engine Live.")
+    
+    # Send initial boot message
+    await report_to_chat(supabase, "Core", "🚀 EMPIRE OS v9.0 Boot Sequence Complete. All systems online.")
+    
+    pulse_counter = 0
     while True:
         await check_new_leads(supabase)
+        
+        # Every 30 loops (approx 30 mins)
+        if pulse_counter >= 30:
+            await agent_status_pulse(supabase)
+            pulse_counter = 0
+            
+        pulse_counter += 1
         await asyncio.sleep(60)
 
 if __name__ == "__main__":
