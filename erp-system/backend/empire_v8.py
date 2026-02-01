@@ -50,7 +50,13 @@ async def get_master_state():
 
     # Context files
     context = {}
-    files = {"mission": "memory/EMPIRE_OS.md", "standard": "memory/working-standard.md"}
+    files = {
+        "mission": "memory/EMPIRE_OS.md", 
+        "standard": "memory/working-standard.md",
+        "user": "USER.md",
+        "identity": "IDENTITY.md",
+        "soul": "SOUL.md"
+    }
     for key, filename in files.items():
         path = f"{WORKSPACE_PATH}/{filename}"
         if os.path.exists(path):
